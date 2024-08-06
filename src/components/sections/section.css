@@ -1,0 +1,131 @@
+/* section.css */
+
+.section-container {
+    background-color: white;
+    text-align: center;
+    border-radius: 20px;
+    max-width: 100%;
+    height: auto;
+    margin: 20px auto; /* Centered margin */
+    padding: 20px;
+  }
+  
+  .hero-section {
+    display: flex;
+    flex-direction: row; /* Arrange items in a row */
+    align-items: center; /* Center items vertically */
+    gap: 20px; /* Space between text and image */
+    /* Ensure content wraps on smaller screens */
+  }
+  
+  .text {
+    flex: 1; /* Take up available space */
+    text-align: left; /* Align text to the left */
+    max-width: 100%;
+    font-size: 30px;
+  }
+  .text h2 {
+    font-size: 50px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-style: italic;
+    
+  }
+  .text p {
+    font-size: 20px;
+    font-weight: lighter;
+font-family: Verdana, Geneva, Tahoma, sans-seri;}
+  
+  .hero-image {
+    max-width: 100%; /* Responsive image width */
+    height: auto; /* Maintain aspect ratio */
+       flex-shrink: 0; /* Prevent the image from shrinking */
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .hero-section {
+      flex-direction: column; /* Stack items vertically on smaller screens */
+      align-items: center; /* Center items horizontally */
+      text-align: center; /* Center text for small screens */
+    }
+  
+    .text {
+      max-width: 100%;
+      margin-bottom: 20px; /* Space between text and image on mobile */
+    }
+    .buttons {
+      display: flex;
+      flex-direction: row;
+    }
+    
+  }
+  
+  .partners-section {
+    text-align: center;
+  }
+  
+  .partners-section h3 {
+    font-size: 1.2rem; /* Adjusted font size for mobile */
+    margin-bottom: 20px;
+    text-align: left;
+    font-weight: lighter;
+  }
+  
+  .partners-logos {
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    gap: 20px;
+    margin-bottom: 30px;
+  }
+  
+  .partners-logos img {
+    max-width: 100px; /* Adjusted logo size for mobile */
+    height: auto;
+  }
+  
+  .buttons {
+    display: flex;
+     /* Stack buttons vertically on mobile */
+    gap: 50px;
+    justify-content: left;
+    flex-direction: row; /* Stack buttons vertically */
+    align-items: first baseline; /* Align buttons to the left */
+   flex-wrap: wrap;
+    text-wrap: wrap;
+  }
+  
+  .button {
+    padding: 10px 20px;
+    font-size: 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: wheat;
+    color: green;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    transform: scale(1.3);
+    transform-origin: left;
+    transition: background-color 0.3s;
+    
+    
+
+  }
+  
+  .button1 {
+    padding: 10px 20px;
+    font-size: 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #0b692f;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    transform: scale(1.3);
+    transform-origin: left;
+    transition: background-color 0.3s;
+  }
+  .buttons button  :hover{
+    background-color: black;
+    transition: 0.5s;
+  }
