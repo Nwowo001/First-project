@@ -9,12 +9,12 @@ const Navbar = () => {
         <a href='#Home'><img src={logo} alt='Seedfi Logo'/></a>
            </div>
       <ul className='nav-menu'>
-        <li><a href='#Home'>Home</a></li>
-        <li><a href='#About'>About</a></li>
-        <li><a href='#Products'>Products</a></li>
-        <li><a href='#Blog'>Blog</a></li>
-        <li><a href='#Contacts'>Contact</a></li>
-        <li><a href='#FAQ'>FAQ</a></li>
+        <li className='nav-items'><a href='#Home' className='links'>Home</a></li >
+        <li className='nav-items'><a href='#About' className='links'>About</a></li >
+        <li className='nav-items'><a href='#Products' className='links'>Products</a></li >
+        <li className='nav-items'><a href='#Blog' className='links'>Blog</a></li >
+        <li className='nav-items'><a href='#Contacts'className='links'>Contact</a></li >
+        <li className='nav-items'><a href='#FAQ' className='links'>FAQ</a></li>
         
       </ul>
       <div className='nav-button'>

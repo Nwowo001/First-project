@@ -13,10 +13,11 @@ const Section = () => {
     <div className="section-container">
       <section className="hero-section">
         <div className="text">
-          <h2>Making Credit</h2>
-          <h2>Accessible to Everyone</h2>
+          <h2>Making Credit <br/> Accessible to Everyone.</h2>
+         
+         
           <p>
-            With flexible terms, competitive rates, and personalized service, we empower you to achieve your goals and secure a brighter financial future. Take control of your finances today and let us be your trusted partner on the path to success.
+            With flexible terms, competitive rates, and personalized service, we <br/>empower you to achieve your goals and secure a brighter financial future. <br/>Take control of your finances today and let us be your trusted <br/>partner on the path to success.
           </p>
 
           <div className="buttons">

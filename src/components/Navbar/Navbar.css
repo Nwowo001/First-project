@@ -1,9 +1,15 @@
-/* Navbar Container */
+body{
+  background-color: beige;
+}
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 20px;
+  padding-right: 200px;
+  padding-top: 0px;
+  margin-bottom: -5px;
+ 
+ 
   
   max-width: 100%;
   height: auto;
@@ -16,7 +22,15 @@
   width: auto;
   margin: 0;
   padding: 50px;
+  margin-right: 100px;
+  margin-top: -50px;
+ display: grid;
+ place-items: center;
 
+}
+.nav-logo{
+  text-align: center;
+  margin: 40px;
 }
 
 .nav-menu {
@@ -24,10 +38,21 @@
   padding: 10px;
   margin: 0;
   list-style: none;
-  font-size: 16px; /* Adjusted for better readability on mobile */
-  gap: 15px;
+  font-size: 20px; /* Adjusted for better readability on mobile */
+  gap: 50px;
   flex: 1; /* Allows menu to take available space */
-justify-content: flex-end;
+justify-content: center;
+
+}
+.links{
+  color: rgba(0, 0, 0, 0.915);
+  text-decoration: none;
+  font-size: 21px;
+  font-family: sans-serif;
+  align-items: center;
+  display: flex;
+  font-weight: lighter;
+
 }
 
 
@@ -35,6 +60,12 @@ justify-content: flex-end;
   margin: 0;
   padding: 5px;
   transition: color 0.3s, transform 0.3s;
+  color: black;
+  margin-bottom: 90px;
+  
+  
+ 
+  
 }
 
 /* Hover effects for menu items */
@@ -44,10 +75,12 @@ justify-content: flex-end;
   cursor: pointer;
 }
 
+
 /* Button Container */
 .nav-button {
-  margin-left: auto;
-  margin-top: 10px; /* Added margin for mobile */
+  margin-left: -200px;
+  margin-top: 0; /* Added margin for mobile */
+
 }
 
 /* Responsive adjustments */
@@ -57,6 +90,7 @@ justify-content: flex-end;
     align-items: center;
     gap: 10px;
   }
+  .nav-menu
   
   .nav-button {
     margin-left: 0;
