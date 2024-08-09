@@ -1,9 +1,14 @@
 import './button.css';
+import { useNavigate } from 'react-router-dom';
 
-const Button = () => {
+function Button() {
+  const navigate = useNavigate();
+
   return (
-    <a href='theseedfi.com'> <button className='sign-in-button'>Sign In</button></a>
+    <button onClick={() => navigate('/sign-in')} className='sign-in-button'>
+      Sign In
+    </button>
   );
-};
+}
 
 export default Button;
