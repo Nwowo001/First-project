@@ -10,7 +10,7 @@ const Navbar = () => {
         <a href='#Home'><img src={logo} alt='Seedfi Logo'/></a>
            </div>
       <ul className='nav-menu'>
-        <li className='nav-items'><a href='/Home' className='links'>Home</a></li >
+        <li className='nav-items'><a href='/' className='links'>Home</a></li >
         <li className='nav-items'><a href='/About' className='links'>About</a></li >
         <li className='nav-items'><a href='/Products' className='links'>Products</a></li >
         <li className='nav-items'><a href='/Blog' className='links'>Blog</a></li >
