@@ -1,0 +1,269 @@
+.form-container {
+    background: hsla(238, 18%, 35%, 0.957);
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.info {
+    display: flex;
+    background-color: hsla(237, 19%, 22%, 0.957);
+    border-radius: 20px;
+    width: 100%;
+    max-width: 1200px; /* Limit max width */
+    height: auto;
+    margin: 50px;
+    padding: 20px; /* Adjust padding */
+    box-sizing: border-box; /* Include padding in width/height */
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    border: none;
+    width: 100%;
+    max-width: 700px; /* Limit max width */
+    margin-top: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+.background {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    width: 100%;
+    overflow: hidden;
+}
+
+.background img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    display: block;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 0;
+    font-size: 20px;
+    color: white;
+}
+
+.text {
+    text-align: center;
+    margin-bottom: 20px;
+    margin-top: 0;
+    font-size: 15px;
+    color: hsl(235, 8%, 70%);
+    font-weight: lighter;
+}
+
+.text p {
+    font-size: 15px;
+}
+
+.text a {
+    color: rgb(117, 95, 117);
+    text-decoration: underline;
+    font-size: 15px;
+}
+
+.text a:hover {
+    color: rgb(241, 14, 14);
+    cursor: pointer;
+}
+
+.inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.username {
+    display: flex; /* Use flexbox to arrange children in a row */
+    gap: 10px; /* Optional: Space between the inputs */
+    width: 100%; /* Full width to ensure responsiveness */
+  
+}
+
+.username input,
+.address input,
+.password input {
+    height: 25px;
+    max-width: 100%; /* Full width */
+    border-radius: 5px;
+    padding: 5px;
+    margin: 5px 0;
+    background-color: hsla(238, 18%, 35%, 0.957);
+    border-style: none;
+    width: 100%; /* Full width */
+}
+
+.buttons {
+    display: flex;
+    justify-content: start;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.btn {
+    height: 45px;
+    width: 100%;
+    max-width: 377px;
+    border-radius: 5px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    background-color: hsl(238, 37%, 34%);
+    color: beige;
+}
+
+.btn:hover {
+    background-color: beige;
+    color: green;
+}
+
+.box {
+    display: flex;
+    justify-content: start;
+    border-radius: 10%;
+}
+
+.box p {
+    padding: 10px;
+    margin: 0;
+    margin-top: -1.9em;
+    margin-left: 1em;
+    color: white;
+}
+.box span{
+    color: rgb(117, 95, 117) ;
+    text-decoration: underline;
+}
+.box span:hover{
+    color: rgb(241, 14, 14);
+    cursor: pointer;
+}
+.footer {
+    display: flex;
+    flex-direction: column; /* Stack footer elements vertically */
+    align-items: center;
+    justify-content: center;
+    font-weight: lighter;
+    margin-top: 20px; /* Adjust margin */
+}
+
+.footer-button {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 10px; /* Adjust margin */
+}
+
+.google,
+.apple {
+    height: 45px;
+    width: 100%; /* Full width */
+    max-width: 150px; /* Limit button width */
+    border-radius: 5px;
+    font-size: 16px;
+    border: 1px solid white;
+    cursor: pointer;
+    background-color: hsla(237, 19%, 22%, 0.957);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+.google p,
+.apple p{
+    color: white;
+}
+
+.google img,
+.apple img {
+    height: 20px;
+    margin-right: 10px; /* Space between image and text */
+}
+
+.apple, .google {
+    border-radius: 10px;
+}
+
+.google:hover,
+.apple:hover {
+    border-color: beige;
+    background-color: hsl(238, 37%, 34%);
+}
+.error {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .container {
+        width: 90%;
+    }
+}
+
+@media (max-width: 768px) {
+    .form-container {
+        padding: 20px;
+    }
+
+    .info {
+        margin: 20px;
+    }
+
+    .container {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .buttons {
+        flex-direction: column;
+    }
+
+    .btn {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .form-container {
+        padding: 10px;
+    }
+
+    .info {
+        margin: 10px;
+    }
+
+    .background img {
+        height: 200px;
+        object-fit: cover;
+    }
+
+    .username input,
+    .address input,
+    .password input {
+        height: 30px;
+    }
+
+    .btn {
+        width: 100%;
+    }
+
+    .box {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
