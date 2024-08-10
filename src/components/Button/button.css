@@ -1,19 +1,18 @@
 /* Button Styling */
 .sign-in-button {
-  padding: 8px 16px; /* Adjusted for mobile */
-  font-size: 20px; /* Adjusted for better mobile view */
+  padding: 8px 10px; /* Adjusted for mobile */
+  font-size: 15px; /* Adjusted for better mobile view */
   border: none;
-  border-radius: 15px;
+  border-radius: 8px;
   background-color: hsla(130, 84%, 19%, 0.835);
   color: white;
   cursor: pointer;
   transition: background-color 0.3s, transform 0.2s;
-  height: 60px;
-  width: 140px;
-  margin-right: -100px;
-  margin-top: -100px;
-  margin-bottom: 65px;
-
+  height: 45px;
+  width: 110px;
+ margin: 10px;
+ 
+ margin-left: 40px;
 }
 
 .sign-in-button:hover {
