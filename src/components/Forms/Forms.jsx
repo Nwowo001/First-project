@@ -1,158 +1,212 @@
-import React, { useState } from 'react';
-import './Forms.css';
-import background from '../../assets/background.jpg';
-import google from '../../assets/google.svg';
-import apple from '../../assets/apple.svg';
+import React, { useState } from "react";
+import "./Forms.css";
+import background from "../../assets/background.jpg";
+import google from "../../assets/google.svg";
+import apple from "../../assets/apple.svg";
+import ButtonComponent from "../Button/ButtonComponent";
 
 const Forms = () => {
-  // State to manage the checkbox status
   const [isChecked, setIsChecked] = useState(false);
-
-  // State for form fields
   const [formData, setFormData] = useState({
-    firstName: '',
-    surname: '',
-    email: '',
-    password: ''
+    firstName: "",
+    surname: "",
+    email: "",
+    password: "",
   });
-
-  // State for errors
   const [errors, setErrors] = useState({});
 
-  // Handler to toggle the checkbox
   const handleCheckboxChange = () => {
     setIsChecked(!isChecked);
+    if (isChecked) {
+      setErrors({ ...errors, terms: "" });
+    }
   };
 
-  // Handler for form field changes
-  const handleChange = (e) => {
-    const { id, value } = e.target;
-    setFormData({
-      ...formData,
-      [id]: value
-    });
+  const handleChange = ({ target: { id, value } }) => {
+    setFormData({ ...formData, [id]: value });
+    if (errors[id]) {
+      setErrors({ ...errors, [id]: "" });
+    }
   };
 
-  // Validate the form
   const validateForm = () => {
     const newErrors = {};
 
     if (!formData.firstName.trim()) {
-      newErrors.firstName = 'First Name is required';
+      newErrors.firstName = "First Name is required";
     }
 
     if (!formData.surname.trim()) {
-      newErrors.surname = 'Surname is required';
+      newErrors.surname = "Surname is required";
     }
 
     if (!formData.email.trim()) {
-      newErrors.email = 'Email is required';
+      newErrors.email = "Email is required";
     } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      newErrors.email = 'Email address is invalid';
+      newErrors.email = "Email address is invalid";
     }
 
     if (!formData.password.trim()) {
-      newErrors.password = 'Password is required';
+      newErrors.password = "Password is required";
     } else if (formData.password.length < 6) {
-      newErrors.password = 'Password must be at least 6 characters';
+      newErrors.password = "Password must be at least 6 characters";
     }
 
     if (!isChecked) {
-      newErrors.terms = 'You must agree to the Terms & Conditions';
+      newErrors.terms = "You must agree to the Terms & Conditions";
     }
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
 
-  // Handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log("Button clicked!");
     if (validateForm()) {
-      // Form is valid, proceed with submission logic
-      console.log('Form data:', formData);
+      alert("Success! Your account has been created.");
+      console.log("Form data:", formData);
     }
   };
 
+  const handleGoogleLogin = () => {
+    window.location.href = "https://accounts.google.com/signin";
+  };
+
+  const handleAppleLogin = () => {
+    window.location.href = "https://appleid.apple.com/account/signin";
+  };
+
   return (
-    <div className='form-container'>
-      <div className='info'>
-        <div className='background'>
-          <img src={background} alt='Background'/>
+    <div className="form-container">
+      <div className="info">
+        <div className="background">
+          <img src={background} alt="Background" />
         </div>
-        <div className='container'>
-          <div className='header'>
+        <div className="container">
+          <div className="header">
             <h1>Create an account</h1>
           </div>
-          <div className='text'>
-            <p>Already have an account? <span><a href='/login'>Login</a></span></p>
+          <div className="text">
+            <p>
+              Already have an account?{" "}
+              <span>
+                <a href="/login">Login</a>
+              </span>
+            </p>
           </div>
-          <form className='inputs' onSubmit={handleSubmit}>
-            <div className='username'>
+          <form className="inputs" onSubmit={handleSubmit}>
+            <div className="username">
               <input
-                id='firstName'
-                type='text'
-                placeholder='First Name'
+                id="firstName"
+                type="text"
+                placeholder="First Name"
                 value={formData.firstName}
                 onChange={handleChange}
               />
-              {errors.firstName && <p className='error'>{errors.firstName}</p>}
+              {errors.firstName && <p className="error">{errors.firstName}</p>}
               <input
-                id='surname'
-                type='text'
-                placeholder='Surname'
+                id="surname"
+                type="text"
+                placeholder="Surname"
                 value={formData.surname}
                 onChange={handleChange}
               />
-              {errors.surname && <p className='error'>{errors.surname}</p>}
+              {errors.surname && <p className="error">{errors.surname}</p>}
             </div>
-            <div className='address'>
+            <div className="address">
               <input
-                id='email'
-                type='email'
-                placeholder='someone@gmail.com'
+                id="email"
+                type="email"
+                placeholder="someone@gmail.com"
                 value={formData.email}
                 onChange={handleChange}
               />
-              {errors.email && <p className='error'>{errors.email}</p>}
+              {errors.email && <p className="error">{errors.email}</p>}
             </div>
-            <div className='password'>
+            <div className="password">
               <input
-                id='password'
-                type='password'
-                placeholder='Suggest a strong password'
+                id="password"
+                type="password"
+                placeholder="Suggest a strong password"
                 value={formData.password}
                 onChange={handleChange}
               />
-              {errors.password && <p className='error'>{errors.password}</p>}
+              {errors.password && <p className="error">{errors.password}</p>}
             </div>
 
-            <div className='box'>
+            <div className="box">
               <label>
                 <input
-                  type='checkbox'
+                  type="checkbox"
                   checked={isChecked}
                   onChange={handleCheckboxChange}
                 />
-                <p>I agree to the <span>Terms & Conditions</span></p>
+                <p>
+                  I agree to the <span>Terms & Conditions</span>
+                </p>
               </label>
-              {errors.terms && <p className='error'>{errors.terms}</p>}
+              {errors.terms && <p className="error">{errors.terms}</p>}
             </div>
-            <div className='buttons'>
-              <button type='submit' className='btn'>Create account</button>
-            </div>
-            <div className='footer'>
+            <ButtonComponent
+              backgroundColor="hsl(238, 37%, 34%)"
+              fontSize="16px"
+              borderRadius="5px"
+              color="white"
+              border="none"
+              margin="10px"
+              padding="17px 30px"
+              cursor="pointer"
+              fontFamily="Arial"
+              className="create-account"
+              type="submit"
+            >
+              Create account
+            </ButtonComponent>
+
+            <div className="footer">
               <p>Or register with</p>
             </div>
-            <div className='footer-button'>
-              <button className='google'><img src={google} alt='Google' /><p>Google</p></button>
-              <button className='apple'><img src={apple} alt='Apple' /><p>Apple</p></button>
+            <div className="alternative-buttons">
+              <ButtonComponent
+                backgroundColor="hsla(237, 19%, 22%, 0.957)"
+                fontSize="16px"
+                borderRadius="8px"
+                color="white"
+                border="1px solid white"
+                margin="10px"
+                padding="0px 30px"
+                cursor="pointer"
+                fontFamily="Arial"
+                className="google"
+                onClick={handleGoogleLogin}
+                // transiton="background-color 0.3s ease"
+              >
+                <img src={google} alt="Google" />
+                <span>google</span>
+              </ButtonComponent>
+              <ButtonComponent
+                backgroundColor="hsla(237, 19%, 22%, 0.957)"
+                fontSize="16px"
+                borderRadius="8px"
+                color="white"
+                border="1px solid white"
+                margin="10px"
+                padding="0px 30px"
+                cursor="pointer"
+                fontFamily="Arial"
+                className="apple"
+                onClick={handleAppleLogin}
+              >
+                <img src={apple} alt="Apple" />
+                <span>apple</span>
+              </ButtonComponent>
             </div>
           </form>
         </div>
       </div>
     </div>
   );
-}
+};
 
 export default Forms;
