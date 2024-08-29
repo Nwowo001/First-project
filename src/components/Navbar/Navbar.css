@@ -30,7 +30,7 @@ body {
 }
 
 .nav-logo img {
-  height: 30px; /* Adjusted for better mobile view */
+  height: 30px;
   width: auto;
   margin: 0;
   padding: 0;
@@ -125,6 +125,9 @@ ul li {
 }
 
 @media (max-width: 768px) {
+  .sign-in {
+    width: 100%;
+  }
   .nav-menu {
     flex-direction: column;
     align-items: center;
