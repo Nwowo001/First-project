@@ -4,6 +4,8 @@ import background from "../../assets/background.jpg";
 import google from "../../assets/google.svg";
 import apple from "../../assets/apple.svg";
 import ButtonComponent from "../Button/ButtonComponent";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 
 const Forms = () => {
   const [isChecked, setIsChecked] = useState(false);
@@ -14,6 +16,7 @@ const Forms = () => {
     password: "",
   });
   const [errors, setErrors] = useState({});
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleCheckboxChange = () => {
     setIsChecked(!isChecked);
@@ -60,12 +63,23 @@ const Forms = () => {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Button clicked!");
     if (validateForm()) {
-      alert("Success! Your account has been created.");
-      console.log("Form data:", formData);
+      try {
+        const response = await fetch("http://localhost:5000/api/register", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        });
+
+        const result = await response.json();
+        alert(result.message);
+      } catch (error) {
+        console.error("Error:", error);
+      }
     }
   };
 
@@ -127,11 +141,21 @@ const Forms = () => {
             <div className="password">
               <input
                 id="password"
-                type="password"
+                type={showPassword ? "text" : "password"}
                 placeholder="Suggest a strong password"
                 value={formData.password}
                 onChange={handleChange}
               />
+              <span
+                onClick={() => setShowPassword(!showPassword)}
+                className="password-toggle"
+              >
+                {showPassword ? (
+                  <FontAwesomeIcon icon={faEye} />
+                ) : (
+                  <FontAwesomeIcon icon={faEyeSlash} />
+                )}
+              </span>
               {errors.password && <p className="error">{errors.password}</p>}
             </div>
 
@@ -180,10 +204,9 @@ const Forms = () => {
                 fontFamily="Arial"
                 className="google"
                 onClick={handleGoogleLogin}
-                // transiton="background-color 0.3s ease"
               >
                 <img src={google} alt="Google" />
-                <span>google</span>
+                <span>Continue with Google</span>
               </ButtonComponent>
               <ButtonComponent
                 backgroundColor="hsla(237, 19%, 22%, 0.957)"
@@ -199,7 +222,7 @@ const Forms = () => {
                 onClick={handleAppleLogin}
               >
                 <img src={apple} alt="Apple" />
-                <span>apple</span>
+                <span>Continue with Apple</span>
               </ButtonComponent>
             </div>
           </form>

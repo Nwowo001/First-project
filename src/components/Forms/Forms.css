@@ -92,10 +92,31 @@
   gap: 10px; /* Optional: Space between the inputs */
   width: 100%; /* Full width to ensure responsiveness */
 }
-
-.username input,
-.address input,
+.password {
+  position: relative; /* Add relative positioning */
+  width: 100%; /* Full width */
+}
 .password input {
+  height: 25px;
+  max-width: 100%; /* Full width */
+  border-radius: 5px;
+  padding: 5px 30px 5px 5px; /* Add padding to make space for the icon */
+  margin: 5px 0;
+  background-color: hsla(238, 18%, 35%, 0.957);
+  border-style: none;
+  width: 90%; /* Full width */
+}
+.password-toggle {
+  position: absolute; /* Position absolutely */
+  right: 10px; /* Adjust the position from the right */
+  top: 50%; /* Center vertically */
+  transform: translateY(-50%); /* Adjust for perfect centering */
+  cursor: pointer;
+  color: white; /* Change icon color as needed */
+  font-size: 16px; /* Adjust icon size */
+}
+.username input,
+.address input {
   height: 25px;
   max-width: 100%; /* Full width */
   border-radius: 5px;
@@ -103,7 +124,7 @@
   margin: 5px 0;
   background-color: hsla(238, 18%, 35%, 0.957);
   border-style: none;
-  width: 100%; /* Full width */
+  width: 96%; /* Full width */
 }
 
 /* .buttons {
