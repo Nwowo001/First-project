@@ -1,77 +1,33 @@
-import http from "http";
-import { StringDecoder } from "string_decoder";
-import bcrypt from "bcryptjs";
+import express from "express";
+import cors from "cors";
 
+const app = express();
 const PORT = 5000;
 
-const server = http.createServer((req, res) => {
-  if (req.method === "OPTIONS") {
-    res.writeHead(200, {
-      "Access-Control-Allow-Origin": "*",
-      "Access-Control-Allow-Methods": "POST, GET, OPTIONS",
-      "Access-Control-Allow-Headers": "Content-Type",
-    });
-    res.end();
-    return;
+app.use(cors());
+app.use(express.json());
+
+app.post("/api/register", (req, res) => {
+  const { firstName, surname, email, password } = req.body;
+
+  if (!firstName || !surname || !email || !password) {
+    return res.status(400).json({ error: "All fields are required" });
   }
 
-  if (req.method === "POST" && req.url === "/api/register") {
-    const decoder = new StringDecoder("utf-8");
-    let buffer = "";
+  console.log({
+    firstName,
+    surname,
+    email,
+    password,
+  });
 
-    req.on("data", (chunk) => {
-      buffer += decoder.write(chunk);
-    });
-
-    req.on("end", async () => {
-      buffer += decoder.end();
-      const parsedData = JSON.parse(buffer);
-
-      const { firstName, surname, email, password } = parsedData;
-
-      if (!firstName || !surname || !email || !password) {
-        res.writeHead(400, {
-          "Content-Type": "application/json",
-          "Access-Control-Allow-Origin": "*",
-        });
-        return res.end(JSON.stringify({ error: "All fields are required" }));
-      }
-
-      try {
-        const salt = bcrypt.genSaltSync(10);
-        const hashedPassword = bcrypt.hashSync(password, salt);
-
-        console.log({
-          firstName,
-          surname,
-          email,
-          hashedPassword, // log hashed password instead of plain text
-        });
-
-        res.writeHead(200, {
-          "Content-Type": "application/json",
-          "Access-Control-Allow-Origin": "*",
-        });
-        res.end(
-          JSON.stringify({ message: "Success! Your account has been created." })
-        );
-      } catch (error) {
-        res.writeHead(500, {
-          "Content-Type": "application/json",
-          "Access-Control-Allow-Origin": "*",
-        });
-        res.end(JSON.stringify({ error: "Server error" }));
-      }
-    });
-  } else {
-    res.writeHead(404, {
-      "Content-Type": "application/json",
-      "Access-Control-Allow-Origin": "*",
-    });
-    res.end(JSON.stringify({ error: "Not Found" }));
-  }
+  res.status(200).json({ message: "Success! Your account has been created." });
 });
 
-server.listen(PORT, () => {
+app.use((req, res) => {
+  res.status(404).json({ error: "Not Found" });
+});
+
+app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });
